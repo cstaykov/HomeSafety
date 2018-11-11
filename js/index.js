@@ -3,9 +3,6 @@ function insertDiv() {
 
   // Get the reference node
 
-    //street[i].textContent
-    //$("steven").text(street[i].textContent);
-
     var referenceNodes = document.getElementsByClassName('pricing resp-module')
     var street = document.getElementsByClassName('p-street-address')
     var city = document.getElementsByClassName('p-locality')
@@ -35,8 +32,14 @@ function insertDiv() {
 
       var newNode = document.createElement('div');
       newNode.id = "steven"
-      referenceNodes[i].append(newNode)
-      newNode.textContent = address
+
+      var url = "https://apis.solarialabs.com/shine/v1/total-home-scores/reports?address=" + address + "%2C%20USA&apikey=YFYHd0eSblGWUtBTYBIkGCqg9z27nZra"
+
+      // $.get(url, function( data ) {
+      //   newNode.textContent = data.totalHomeScores.quiet.value.toString()
+      //   console.log( data );
+      // });
+
 
       let options = {
         "url": "https://apis.solarialabs.com/shine/v1/total-home-scores/reports?address=" + address + "%2C%20USA&apikey=YFYHd0eSblGWUtBTYBIkGCqg9z27nZra",
@@ -44,18 +47,14 @@ function insertDiv() {
         "processData": false
       }
       $.ajax(options).done((response) => {
-        // alert(i + " INSIDE AJAX")
         // alert(response.totalHomeScores.quiet.value)
-
         newNode.textContent = response.totalHomeScores.quiet.value.toString()
+        alert(newNode.textContent)
       })
 
+      newNode.textContent = i.toString();
+      referenceNodex[i].append(newNode)
   }
-
-
-
-
-
 
 }
 
