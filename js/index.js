@@ -1,6 +1,51 @@
+function getResponseQuietValue(response) {
+  quietValue = response.totalHomeScores.quiet.value
+  quietValue = Math.round(quietValue)
+  return quietValue
+}
+
+function getResponseTrafficValue(response) {
+  trafficValue = response.totalHomeScores.traffic.value
+  trafficValue = Math.round(trafficValue)
+  return trafficValue
+}
+
+function getResponseSafetyValue(response) {
+  safetyValue = response.totalHomeScores.safety.value
+  safetyValue = Math.round(safetyValue)
+  return safetyValue
+}
+
+function getResponseEntertainmentValue(response) {
+  entertainmentValue = response.totalHomeScores.entertainment.value
+  entertainmentValue = Math.round(entertainmentValue)
+  return entertainmentValue
+}
+
+// TODO: Change label based on value
+function makeLabel(description, value) {
+  label = document.createElement("span")
+  label.className = "label label-default"
+  label.textContent = description + " " + value
+  return label
+}
+
+function appendLabels(parent, response) {
+  quietScore = makeLabel("Quiet Score:", getResponseQuietValue(response))
+  trafficScore = makeLabel("Traffic Score:", getResponseTrafficValue(response))
+  safetyScore = makeLabel("Safety Score:", getResponseSafetyValue(response))
+  entertainmentScore = makeLabel("Entertainment Score:", getResponseEntertainmentValue(response))
+  parent.append(quietScore)
+  parent.append(document.createElement("br"))
+  parent.append(trafficScore)
+  parent.append(document.createElement("br"))
+  parent.append(safetyScore)
+  parent.append(document.createElement("br"))
+  parent.append(entertainmentScore)
+}
+
+
 function insertDiv() {
-
-
     var head = document.getElementsByTagName('head')[0];
 
     var jqScript = document.createElement('script');
@@ -170,118 +215,40 @@ function insertDiv() {
     }
 
     $.ajax(options1).done(function(response){
-      quiet1 = response.totalHomeScores.quiet.value
-      traffic1 = response.totalHomeScores.traffic.value
-      safety1 = response.totalHomeScores.safety.value
-      entertainment1 = response.totalHomeScores.entertainment.value
-      quiet1 = Math.round(quiet1)
-      traffic1 = Math.round(traffic1)
-      safety1 = Math.round(safety1)
-      entertainment1 = Math.round(entertainment1)
-
-      quietScore = document.createElement("span")
-      quietScore.className = "label label-default"
-      quietScore.textContent = "Quiet Score: " + quiet1
-
-      //newNode1.textContent = "Quiet Score: " + quiet1 + " Traffic Score: " + traffic1 + " Safety Score: " + safety1 + " Entertainment: " + entertainment1
       referenceNodes[0].append(newNode1)
-      newNode1.append(quietScore)
+      appendLabels(newNode1,response)
     })
   	$.ajax(options2).done(function(response){
-          quiet2 = response.totalHomeScores.quiet.value
-          traffic2 = response.totalHomeScores.traffic.value
-          safety2 = response.totalHomeScores.safety.value
-          entertainment2 = response.totalHomeScores.entertainment.value
-          quiet2 = Math.round(quiet2)
-          traffic2 = Math.round(traffic2)
-          safety2 = Math.round(safety2)
-          entertainment2 = Math.round(entertainment2)
-          newNode2.textContent = "Quiet Score: " + quiet2 + " Traffic Score: " + traffic2 + " Safety Score: " + safety2 + " Entertainment: " + entertainment2
-          referenceNodes[1].append(newNode2)
-        })
+      referenceNodes[1].append(newNode2)
+      appendLabels(newNode2,response)
+    })
   	$.ajax(options3).done(function(response){
-          quiet3 = response.totalHomeScores.quiet.value
-          traffic3 = response.totalHomeScores.traffic.value
-          safety3 = response.totalHomeScores.safety.value
-          entertainment3 = response.totalHomeScores.entertainment.value
-          quiet3 = Math.round(quiet3)
-          traffic3 = Math.round(traffic3)
-          safety3 = Math.round(safety3)
-          entertainment3 = Math.round(entertainment3)
-          newNode3.textContent = "Quiet Score: " + quiet3 + " Traffic Score: " + traffic3 + " Safety Score: " + safety3 + " Entertainment: " + entertainment3
-          referenceNodes[2].append(newNode3)
-        })
+      referenceNodes[2].append(newNode3)
+      appendLabels(newNode3,response)
+    })
   	$.ajax(options4).done(function(response){
-          quiet4 = response.totalHomeScores.quiet.value
-          traffic4 = response.totalHomeScores.traffic.value
-          safety4 = response.totalHomeScores.safety.value
-          entertainment4 = response.totalHomeScores.entertainment.value
-          quiet4 = Math.round(quiet4)
-          traffic4 = Math.round(traffic4)
-          safety4 = Math.round(safety4)
-          entertainment4 = Math.round(entertainment4)
-          newNode4.textContent = "Quiet Score: " + quiet4 + " Traffic Score: " + traffic4 + " Safety Score: " + safety4 + " Entertainment: " + entertainment4
-          referenceNodes[3].append(newNode4)
-        })
+      referenceNodes[3].append(newNode4)
+      appendLabels(newNode4,response)
+    })
   	$.ajax(options5).done(function(response){
-          quiet5 = response.totalHomeScores.quiet.value
-          traffic5 = response.totalHomeScores.traffic.value
-          safety5 = response.totalHomeScores.safety.value
-          entertainment5 = response.totalHomeScores.entertainment.value
-          quiet5 = Math.round(quiet5)
-          traffic5 = Math.round(traffic5)
-          safety5 = Math.round(safety5)
-          entertainment5 = Math.round(entertainment5)
-          newNode5.textContent = "Quiet Score: " + quiet5 + " Traffic Score: " + traffic5 + " Safety Score: " + safety5 + " Entertainment: " + entertainment5
-          referenceNodes[4].append(newNode5)
-        })
+      referenceNodes[4].append(newNode5)
+      appendLabels(newNode5,response)
+    })
   	$.ajax(options6).done(function(response){
-          quiet6 = response.totalHomeScores.quiet.value
-          traffic6 = response.totalHomeScores.traffic.value
-          safety6 = response.totalHomeScores.safety.value
-          entertainment6 = response.totalHomeScores.entertainment.value
-          quiet6 = Math.round(quiet6)
-          traffic6 = Math.round(traffic6)
-          safety6 = Math.round(safety6)
-          entertainment6 = Math.round(entertainment6)
-          newNode6.textContent = "Quiet Score: " + quiet6 + " Traffic Score: " + traffic6 + " Safety Score: " + safety6 + " Entertainment: " + entertainment6
-          referenceNodes[5].append(newNode6)
-        })
+      referenceNodes[5].append(newNode6)
+      appendLabels(newNode6,response)
+    })
   	$.ajax(options7).done(function(response){
-          quiet7 = response.totalHomeScores.quiet.value
-          traffic7 = response.totalHomeScores.traffic.value
-          safety7 = response.totalHomeScores.safety.value
-          entertainment7 = response.totalHomeScores.entertainment.value
-          quiet7 = Math.round(quiet7)
-          traffic7 = Math.round(traffic7)
-          safety7 = Math.round(safety7)
-          entertainment7 = Math.round(entertainment7)
-          newNode7.textContent = "Quiet Score: " + quiet7 + " Traffic Score: " + traffic7 + " Safety Score: " + safety7 + " Entertainment: " + entertainment7
-          referenceNodes[6].append(newNode7)
-        })
+      referenceNodes[6].append(newNode7)
+      appendLabels(newNode7,response)
+    })
   	$.ajax(options8).done(function(response){
-          quiet8 = response.totalHomeScores.quiet.value
-          traffic8 = response.totalHomeScores.traffic.value
-          safety8 = response.totalHomeScores.safety.value
-          entertainment8 = response.totalHomeScores.entertainment.value
-          quiet8 = Math.round(quiet8)
-          traffic8 = Math.round(traffic8)
-          safety8 = Math.round(safety8)
-          entertainment8 = Math.round(entertainment8)
-          newNode8.textContent = "Quiet Score: " + quiet8 + " Traffic Score: " + traffic8 + " Safety Score: " + safety8 + " Entertainment: " + entertainment8
-          referenceNodes[7].append(newNode8)
-        })
+      referenceNodes[7].append(newNode8)
+      appendLabels(newNode8,response)
+    })
   	$.ajax(options9).done(function(response){
-          quiet9 = response.totalHomeScores.quiet.value
-          traffic9 = response.totalHomeScores.traffic.value
-          safety9 = response.totalHomeScores.safety.value
-          entertainment9 = response.totalHomeScores.entertainment.value
-          quiet9 = Math.round(quiet9)
-          traffic9 = Math.round(traffic9)
-          safety9 = Math.round(safety9)
-          entertainment9 = Math.round(entertainment9)
-          newNode9.textContent = "Quiet Score: " + quiet9 + " Traffic Score: " + traffic9 + " Safety Score: " + safety9 + " Entertainment: " + entertainment9
-          referenceNodes[8].append(newNode9)
+      referenceNodes[8].append(newNode9)
+      appendLabels(newNode9,response)
     })
 }
 
