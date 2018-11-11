@@ -1,0 +1,7 @@
+#steven {
+  border: 2px solid #f00;
+}
+
+#steven::before {
+  content: "Newly-added <div> element.";
+}
