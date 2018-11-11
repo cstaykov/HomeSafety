@@ -2,10 +2,10 @@
 <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
 <script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script> */
 
-#steven {
-  border: 2px solid #f00;
-}
-
-#steven::before {
-
+.ShineData {
+  width: 50px;
+  align-content: right;
+  right: 17px;
+  padding: 8px;
+  position: absolute;
 }
