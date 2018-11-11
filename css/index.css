@@ -3,9 +3,11 @@
 <script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script> */
 
 .ShineData {
-  width: 50px;
+  width: 100px;
   align-content: right;
   right: 17px;
   padding: 8px;
   position: absolute;
+  color: blue;
+ font-family: 'Trebuchet MS', Helvetica, sans-serif;
 }
