@@ -9,6 +9,7 @@ function insertDiv() {
   for (i = 0; i < referenceNodes.length; i++)  {
     var newNode = document.createElement('div');
     newNode.id = "steven"
+    newNode.classList.add('tooltip')
     referenceNodes[i].append(newNode)
   }
 
