@@ -40,20 +40,24 @@ function insertDiv() {
       //   console.log( data );
       // });
 
-
+      newNode.textContent = "OLD TEXT";
+      let count = i;
       let options = {
-        "url": "https://apis.solarialabs.com/shine/v1/total-home-scores/reports?address=" + address + "%2C%20USA&apikey=YFYHd0eSblGWUtBTYBIkGCqg9z27nZra",
+        "url": url,
         "method": "GET",
         "processData": false
       }
-      $.ajax(options).done((response) => {
+      console.log("about to fire ajax on " + url)
+      $.ajax(options).done(function(response){
         // alert(response.totalHomeScores.quiet.value)
+        //console.log(i)
         newNode.textContent = response.totalHomeScores.quiet.value.toString()
-        alert(newNode.textContent)
+        referenceNodes[count].append(newNode)
+        //console.log(newNode.textContent)
       })
 
-      newNode.textContent = i.toString();
-      referenceNodex[i].append(newNode)
+
+
   }
 
 }
