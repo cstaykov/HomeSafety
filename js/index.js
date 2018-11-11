@@ -178,8 +178,14 @@ function insertDiv() {
       traffic1 = Math.round(traffic1)
       safety1 = Math.round(safety1)
       entertainment1 = Math.round(entertainment1)
-      newNode1.textContent = "Quiet Score: " + quiet1 + " Traffic Score: " + traffic1 + " Safety Score: " + safety1 + " Entertainment: " + entertainment1
+
+      quietScore = document.createElement("span")
+      quietScore.className = "label label-default"
+      quietScore.textContent = "Quiet Score: " + quiet1
+
+      //newNode1.textContent = "Quiet Score: " + quiet1 + " Traffic Score: " + traffic1 + " Safety Score: " + safety1 + " Entertainment: " + entertainment1
       referenceNodes[0].append(newNode1)
+      newNode1.append(quietScore)
     })
   	$.ajax(options2).done(function(response){
           quiet2 = response.totalHomeScores.quiet.value
