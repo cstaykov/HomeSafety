@@ -6,7 +6,7 @@
   "content_scripts": [
         {
             "matches": [
-              "https://www.google.com/*"
+              "https://www.hotels.com/*"
             ],
             "css": ["css/index.css"],
             "js": ["js/index.js"],

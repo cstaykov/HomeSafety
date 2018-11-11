@@ -1,13 +1,17 @@
 function insertDiv() {
   // Create a new element
-  var newNode = document.createElement('div');
-  newNode.id = "steven"
 
   // Get the reference node
-  var referenceNode = document.getElementById('gac_scont');
+  var referenceNodes = document.getElementsByClassName('pricing resp-module')
+  console.log('a ting:')
+  console.log(referenceNodes)
 
-  // Insert the new node before the reference node
-  referenceNode.after(newNode);
+  for (i = 0; i < referenceNodes.length; i++)  {
+    var newNode = document.createElement('div');
+    newNode.id = "steven"
+    referenceNodes[i].append(newNode)
+  }
+
 }
 
 insertDiv()
