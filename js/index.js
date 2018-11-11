@@ -47,7 +47,7 @@ function insertDiv() {
         "method": "GET",
         "processData": false
       }
-      console.log("about to fire ajax on " + url)
+
       $.ajax(options).done(function(response){
         // alert(response.totalHomeScores.quiet.value)
         //console.log(i)
@@ -55,8 +55,6 @@ function insertDiv() {
         referenceNodes[count].append(newNode)
         //console.log(newNode.textContent)
       })
-
-
 
   }
 
