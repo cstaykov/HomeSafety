@@ -25,7 +25,14 @@ function getResponseEntertainmentValue(response) {
 // TODO: Change label based on value
 function makeLabel(description, value) {
   label = document.createElement("span")
-  label.className = "label label-default"
+  if (value >= 60) {
+    label.className = "label label-success"
+  } else if (value >= 30) {
+    label.className = "label label-warning"
+  } else {
+    label.className = "label label-danger"
+  }
+
   label.textContent = description + " " + value
   return label
 }
@@ -249,7 +256,14 @@ function insertDiv() {
   	$.ajax(options9).done(function(response){
       referenceNodes[8].append(newNode9)
       appendLabels(newNode9,response)
-    })
+    });
+
+    var insertionListener = function(event) {
+      // Making sure that this is the animation we want.
+      if (event.animationName === "nodeInserted") {
+        alert("Node has been inserted: " + event.target);
+      }
+    }
 }
 
 
