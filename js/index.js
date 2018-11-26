@@ -16,11 +16,11 @@ function getResponseSafetyValue(response) {
   return safetyValue
 }
 
-function getResponseEntertainmentValue(response) {
-  entertainmentValue = response.totalHomeScores.entertainment.value
-  entertainmentValue = Math.round(entertainmentValue)
-  return entertainmentValue
-}
+// function getResponseEntertainmentValue(response) {
+//   entertainmentValue = response.totalHomeScores.entertainment.value
+//   entertainmentValue = Math.round(entertainmentValue)
+//   return entertainmentValue
+// }
 
 // TODO: Change label based on value
 function makeLabel(description, value) {
@@ -41,14 +41,14 @@ function appendLabels(parent, response) {
   quietScore = makeLabel("Quiet Score:", getResponseQuietValue(response))
   trafficScore = makeLabel("Traffic Score:", getResponseTrafficValue(response))
   safetyScore = makeLabel("Safety Score:", getResponseSafetyValue(response))
-  entertainmentScore = makeLabel("Entertainment Score:", getResponseEntertainmentValue(response))
+  // entertainmentScore = makeLabel("Entertainment Score:", getResponseEntertainmentValue(response))
   parent.append(quietScore)
   parent.append(document.createElement("br"))
   parent.append(trafficScore)
   parent.append(document.createElement("br"))
   parent.append(safetyScore)
   parent.append(document.createElement("br"))
-  parent.append(entertainmentScore)
+  // parent.append(entertainmentScore)
 }
 
 
