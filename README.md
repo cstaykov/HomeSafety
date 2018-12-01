@@ -1,6 +1,6 @@
 # HomeSafety
 
-A chrome extension that gives a neighbourhood safety, quietness, and traffic score to hotel listings on hotel.com. Score calculated by LibertyManual's shineAPI.
+A chrome extension that gives a neighbourhood safety, quietness, and traffic score to hotel listings on hotel.com. Score calculated by LibertyMutual's shineAPI.
 
 ## Motivation
 
