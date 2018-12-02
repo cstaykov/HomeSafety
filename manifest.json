@@ -8,7 +8,7 @@
             "matches": [
               "https://www.hotels.com/*"
             ],
-            "js": ["node_modules/jquery/dist/jquery.min.js", "js/index.js"],
+            "js": ["js/index.js"],
             "run_at": "document_end"
         }
     ]

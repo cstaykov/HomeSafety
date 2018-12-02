@@ -79,13 +79,6 @@ function addHotelScores() {
       appendLabels(newNodes[i], response)}))
 
   }
-
-  // var insertionListener = function(event) {
-  //   // Making sure that this is the animation we want.
-  //   if (event.animationName === "nodeInserted") {
-  //     alert("Node has been inserted: " + event.target);
-  //   }
-  // }
 }
 
 function installBoostrap() {
