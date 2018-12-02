@@ -1,25 +1,62 @@
+function setupObserver() {
+    // Select the node that will be observed for mutations
+    var targetNode = document.body;
+
+    // Options for the observer (which mutations to observe)
+    var config = {
+      attributes: true,
+      childList: true,
+      subtree: true
+    };
+
+    // Callback function to execute when mutations are observed
+    var callback = function (mutationsList, observer) {
+      for (var mutation of mutationsList) {
+        if (mutation.type == 'childList') {
+          console.log('A child node has been added or removed.');
+        } else if (mutation.type == 'attributes') {
+          console.log('The ' + mutation.attributeName + ' attribute was modified.');
+        }
+      }
+    };
+
+    // Create an observer instance linked to the callback function
+    var observer = new MutationObserver(callback);
+
+    // Start observing the target node for configured mutations
+    observer.observe(targetNode, config);
+}
+
 function getResponseQuietValue(response) {
-  quietValue = response.totalHomeScores.quiet.value
-  quietValue = Math.round(quietValue)
-  return quietValue
+  if (response && response.totalHomeScores && response.totalHomeScores.quiet && response.totalHomeScores.quiet.value) {
+    let quietValue = Math.round(response.totalHomeScores.quiet.value)
+    return quietValue
+  }
+  return 'NA'
 }
 
 function getResponseTrafficValue(response) {
-  trafficValue = response.totalHomeScores.traffic.value
-  trafficValue = Math.round(trafficValue)
-  return trafficValue
+  if (response && response.totalHomeScores && response.totalHomeScores.traffic && response.totalHomeScores.traffic.value) {
+    let trafficValue = Math.round(response.totalHomeScores.traffic.value)
+    return trafficValue
+  }
+  return 'NA'
 }
 
 function getResponseSafetyValue(response) {
-  safetyValue = response.totalHomeScores.safety.value
-  safetyValue = Math.round(safetyValue)
-  return safetyValue
+  if (response && response.totalHomeScores && response.totalHomeScores.safety && response.totalHomeScores.safety.value) {
+    let safetyValue = Math.round(response.totalHomeScores.safety.value)
+    return safetyValue
+  }
+  return 'NA'
 }
 
 function getResponseEntertainmentValue(response) {
-  entertainmentValue = response.totalHomeScores.entertainment.value
-  entertainmentValue = Math.round(entertainmentValue)
-  return entertainmentValue
+  if (response && response.totalHomeScores && response.totalHomeScores.entertainment && response.totalHomeScores.entertainment.value) {
+    let entertainmentValue = Math.round(response.totalHomeScores.entertainment.value)
+    return entertainmentValue
+  }
+  return 'NA'
 }
 
 // TODO: Change label based on value
@@ -29,8 +66,10 @@ function makeLabel(description, value) {
     label.className = "label label-success"
   } else if (value >= 30) {
     label.className = "label label-warning"
-  } else {
+  } else if (value >= 0) {
     label.className = "label label-danger"
+  } else {
+    label.className = "label label-default"
   }
 
   label.textContent = description + " " + value
@@ -58,7 +97,7 @@ function addHotelScores() {
   var state = document.getElementsByClassName('p-region')
   var newNodes = []
 
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < referenceNodes.length; i++) {
     var streetText = street[i].textContent.replace(/\u00a0/g, "%20");
     var cityText = city[i].textContent.replace(/\u00a0/g, "%20");
     var stateText = state[i].textContent.replace(/\u00a0/g, "%20");
@@ -70,14 +109,14 @@ function addHotelScores() {
     address = streetText + cityText + stateText
 
     var url = "https://apis.solarialabs.com/shine/v1/total-home-scores/reports?address=" + address + "%2C%20USA&apikey=YFYHd0eSblGWUtBTYBIkGCqg9z27nZra"
-    
+
     var newNode = document.createElement('div')
     newNodes.push(newNode)
 
     fetch(url).then(r => r.json().then(response => {
       referenceNodes[i].append(newNodes[i])
-      appendLabels(newNodes[i], response)}))
-
+      appendLabels(newNodes[i], response)
+    }))
   }
 }
 
@@ -102,4 +141,5 @@ function installBoostrap() {
 }
 
 installBoostrap()
+//setupObserver()
 addHotelScores()
